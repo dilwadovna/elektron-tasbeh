@@ -1,0 +1,71 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Arial', sans-serif;
+    /* 4 xil rangli gradient fon */
+    background: linear-gradient(45deg, #ffffff, #d3d3d3, #add8e6, #e6e6fa);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    text-align: center;
+    min-width: 300px;
+}
+
+h1 { color: #333; }
+
+#count {
+    font-size: 80px;
+    margin: 20px 0;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.btn {
+    width: 80px;
+    height: 80px;
+    font-size: 30px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.increase { background-color: #4CAF50; color: white; }
+.decrease { background-color: #f44336; color: white; }
+
+.btn:active { transform: scale(0.9); }
+
+.controls button {
+    margin: 5px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #555;
+    color: white;
+    cursor: pointer;
+}
+
+.controls button:hover { background-color: #333; }
