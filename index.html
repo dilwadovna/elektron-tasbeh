@@ -8,19 +8,21 @@
 </head>
 <body>
 
-    <div class="container">
-        <h1>Elektron Tasbeh</h1>
-        <p id="count">0</p>
-
-        <div class="buttons">
-            <button class="btn increase" onclick="increaseCount()">+</button>
-            <button class="btn decrease" onclick="decreaseCount()">-</button>
+    <div class="tasbeh-container">
+        <h1>Tasbeh</h1>
+        
+        <div class="display">
+            <span id="counter">0</span>
         </div>
 
-        <div class="controls">
-            <button onclick="resetCount()">Reset</button>
-           
+        <button class="btn-large" id="add-btn">+</button>
+
+        <div class="sub-controls">
+            <button class="btn-small" id="minus-btn">-</button>
+            <button class="btn-small" id="reset-btn">Reset</button>
         </div>
+        
+        <p id="status-msg"></p>
     </div>
 
     <script src="app.js"></script>

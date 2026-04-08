@@ -1,52 +1,45 @@
-// O'zgaruvchini e'lon qilish
+// O'zgaruvchilarni e'lon qilish
 let count = 0;
 
-// Sahifa yuklanganda avtomatik Load qilish
-window.onload = function() {
-    loadCount();
-};
+// Elementlarni tanlab olish
+const counterDisplay = document.getElementById('counter');
+const statusMsg = document.getElementById('status-msg');
+const addBtn = document.getElementById('add-btn');
+const minusBtn = document.getElementById('minus-btn');
+const resetBtn = document.getElementById('reset-btn');
 
-// Ekranda ko'rsatish va AVTOMATIK SAQLASH
-function updateCount() {
-    document.getElementById("count").innerHTML = count;
-    // Har safar o'zgarganda localStorage-ga saqlaydi (Auto-save)
-    localStorage.setItem("count", count);
+// Ekranni yangilash funksiyasi
+function updateDisplay() {
+    counterDisplay.textContent = count;
 }
 
-// Oshirish funksiyasi
-function increaseCount() {
+// 1. Qo'shish funksiyasi
+addBtn.addEventListener('click', () => {
     count++;
-    updateCount();
-}
+    updateDisplay();
+});
 
-// Kamaytirish funksiyasi (0 dan pastga tushmaydi)
-function decreaseCount() {
+// 2. Kamaytirish funksiyasi
+minusBtn.addEventListener('click', () => {
     if (count > 0) {
         count--;
-        updateCount();
+        updateDisplay();
     } else {
+        statusMsg.textContent = "Hisob 0 dan kamaymaydi!";
+        // Xabarni 2 sekunddan keyin o'chirish
+        setTimeout(() => { 
+            statusMsg.textContent = ""; 
+        }, 2000);
     }
-}
+});
 
-// Tozalash (Reset)
-function resetCount() {
-    if (confirm("Rostdan ham nollamoqchimisiz?")) {
+// 3. Reset (Nolga tushirish) funksiyasi
+resetBtn.addEventListener('click', () => {
+    const check = confirm("Hisobni o'chirib tashlamoqchimisiz?");
+    if (check) {
         count = 0;
-        updateCount();
+        updateDisplay();
+        statusMsg.textContent = "Tozalandi";
+        setTimeout(() => { statusMsg.textContent = ""; }, 1500);
     }
-}
-
-// Qo'lda saqlash (Ixtiyoriy)
-function saveCount() {
-    localStorage.setItem("count", count);
-    alert("Saqlandi: " + count);
-}
-
-// Yuklash funksiyasi
-function loadCount() {
-    let saved = localStorage.getItem("count");
-    if (saved !== null) {
-        count = Number(saved);
-        updateCount();
-    }
-}
+});
